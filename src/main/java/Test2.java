@@ -59,28 +59,38 @@ public class Test2 {
         driver.findElement(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a")).click();
         System.out.println("Found");
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.xpath("//*[@id=\"header_logo\"]/a/img")));
-        String quantity= driver.findElement(By.xpath("//*[@id=\"product_1_3_0_0\"]/td[5]/input[1]")).getText();
-        driver.findElement(By.xpath("//*[@id=\"order\"]")).sendKeys("PAGE_DOWN");
+        Thread.sleep(5000);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated
+//                (By.xpath("//*[@id=\"header_logo\"]/a/img")));
+//        driver.findElement(By.xpath("//*[@id=\"order\"]")).sendKeys("PAGE_DOWN");
+        String quantity = driver.findElement
+                (By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a/span[1]")).getText();
 //        js.executeScript("arguments[0].scrollIntoView(true);", quantity);
         if
-        (quantity.equals("2")){
+        (quantity.equals("2")) {
             wait.until(ExpectedConditions.visibilityOfElementLocated
                     (By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a")));
-            WebElement cart= driver.findElement(By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a"));
+            WebElement cart = driver.findElement(By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a"));
             hover.moveToElement(cart).build().perform();
-            WebElement checkout= driver.findElement(By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a"));
+            WebElement checkout = driver.findElement
+                    (By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[3]/div/div/div/div/dl/dt/span/a"));
             hover.moveToElement(checkout).click(checkout).build().perform();
-            driver.findElement(By.xpath("//*[@id=\"1_3_0_0\"]/i"));
+//            driver.findElement(By.xpath("//*[@id=\"1_3_0_0\"]/i"));
             System.out.println("Erased");
 
 
-        }
-//        else {
-//            driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a[2]")).click();
-//            System.out.println("WTF");
+        } else {
+            driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a[2]")).click();
+            System.out.println("WTF");
 
         }
+        Thread.sleep(5000);
+        String empty= driver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText();
+        if(empty.equals("Your shopping cart is empty")) {
+            driver.quit();
+        }
+        System.out.println("Done");
     }
+
+}
 
