@@ -59,10 +59,11 @@ public class Test2 {
         driver.findElement(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a")).click();
         System.out.println("Found");
 
-        String quantity= driver.findElement(By.xpath("//*[@id=\"product_1_3_0_0\"]/td[5]/input[1]")).getText();
         wait.until(ExpectedConditions.visibilityOfElementLocated
                 (By.xpath("//*[@id=\"header_logo\"]/a/img")));
-        js.executeScript("arguments[0].scrollIntoView();", quantity);
+        String quantity= driver.findElement(By.xpath("//*[@id=\"product_1_3_0_0\"]/td[5]/input[1]")).getText();
+        driver.findElement(By.xpath("//*[@id=\"order\"]")).sendKeys("PAGE_DOWN");
+//        js.executeScript("arguments[0].scrollIntoView(true);", quantity);
         if
         (quantity.equals("2")){
             wait.until(ExpectedConditions.visibilityOfElementLocated
