@@ -87,6 +87,7 @@ public class Test2 {
         assertThat(empty).isEqualTo("Your shopping cart is empty.") ;
         System.out.println("Done");
         driver.quit();
+
     }
 
 }
