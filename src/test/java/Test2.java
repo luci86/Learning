@@ -11,8 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-
-
 public class Test2 {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver",
