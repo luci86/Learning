@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 
@@ -86,10 +86,9 @@ public class Test2 {
         }
         Thread.sleep(5000);
         String empty= driver.findElement(By.xpath("//*[@id=\"center_column\"]/p")).getText();
-        if(empty.equals("Your shopping cart is empty")) {
-            driver.quit();
-        }
+        assertThat(empty).isEqualTo("Your shopping cart is empty.") ;
         System.out.println("Done");
+        driver.quit();
     }
 
 }
