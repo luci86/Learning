@@ -6,15 +6,16 @@ import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import steps.SecondStep;
 import steps.firstStep;
-import steps.secondStep;
 
 @RunWith(SerenityRunner.class)
 public class firstTest {
 
     @Steps
     firstStep user;
-    secondStep user2;
+    @Steps
+    SecondStep user2;
 
     @Managed
     WebDriver driver;
@@ -23,6 +24,6 @@ public class firstTest {
     public void userShouldBeAbleToCreateAndUpdateNumberOfUseCases() throws InterruptedException {
         user.firstSteps();
         Thread.sleep(5000);
-    //        user2.Second();
+        user2.second();
     }
 }

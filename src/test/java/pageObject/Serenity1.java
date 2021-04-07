@@ -25,7 +25,7 @@ public class Serenity1 extends PageObject {
     @FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div[2]/ul/li/div/div[1]/div/a[1]/img")
     public WebElementFacade picture;
 
-    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[1]/div/div[1]/a")
+    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[1]/div/a[2]")
     public WebElementFacade quickview;
 
     @FindBy (tagName = "iframe")
@@ -40,21 +40,6 @@ public class Serenity1 extends PageObject {
     @FindBy(xpath = "//*[@id=\"add_to_cart\"]/button/span")
     public WebElementFacade addtocart;
 
-    @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]")
-    WebElementFacade items;
-
-    @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a")
-    WebElementFacade proceed;
-
-    @FindBy(xpath = "//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a")
-    WebElementFacade cart;
-
-    @FindBy(xpath = "//*[@id=\"button_order_cart\"]/span")
-    WebElementFacade checkout;
-
-    @FindBy(xpath = "//*[@id=\"1_1_0_0\"]/i")
-    WebElementFacade delete;
-
 
     // toCart je method
     public void toCart() throws InterruptedException {
@@ -64,8 +49,7 @@ public class Serenity1 extends PageObject {
 
         shirt.click();
         
-        Actions builder1= new Actions(getDriver());
-        Actions hoverOver1= builder1.moveToElement(picture);
+        Actions hoverOver1= builder.moveToElement(picture);
         hoverOver1.build().perform();
 
         quickview.click();
@@ -81,21 +65,20 @@ public class Serenity1 extends PageObject {
         addtocart.click();
 
 
-
     }
 
-    public void end(){
+//    public void end(){
+//
+////        assert items.containsText("There are 2 items in your cart.");
+//        proceed.click();
+//
+//        Actions builder2= new Actions(getDriver());
+//        Actions hoverOver2= builder2.moveToElement(cart);
+//        hoverOver2.build().perform();
+//
+//        checkout.click();
+//
+//        delete.click();
 
-//        assert items.containsText("There are 2 items in your cart.");
-        proceed.click();
 
-        Actions builder2= new Actions(getDriver());
-        Actions hoverOver2= builder2.moveToElement(cart);
-        hoverOver2.build().perform();
-
-        checkout.click();
-
-        delete.click();
-
-    }
 }

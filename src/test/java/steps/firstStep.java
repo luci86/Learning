@@ -12,6 +12,6 @@ public class firstStep {
     public void firstSteps() throws InterruptedException {
         pageObj.open();
         pageObj.toCart();
-        pageObj.end();
+//        pageObj.end();
     }
 }

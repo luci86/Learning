@@ -13,30 +13,41 @@ public class Serenity2 extends PageObject {
     @Managed ()
     WebDriver driver;
 
-//    @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[1]/span")
-//    WebElementFacade items;
+    @FindBy(css = "#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6")
+    WebElementFacade items;
 
-    @FindBy(xpath = "//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a")
+    @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span/span")
+    WebElementFacade proceed;
+
+    @FindBy(css = "#header > div:nth-child(3) > div > div > div:nth-child(3) > div > a")
     WebElementFacade cart;
 
-    @FindBy(xpath = "//*[@id=\"button_order_cart\"]/span")
+    @FindBy(css = "#button_order_cart > span")
     WebElementFacade checkout;
 
     @FindBy(xpath = "//*[@id=\"1_1_0_0\"]/i")
     WebElementFacade delete;
 
+    @FindBy(xpath = "//*[@id=\"center_column\"]/p")
+    WebElementFacade finish;
 
-    public void End(){
 
-//        items.containsText("There are 2 items in your cart.");
-//        assert items.containsText("There are 2 items in your cart.");
+    public void end(){
+
+//        assert items.getText().equals("There are 2 items in your cart.");
 
 //        items.click();
 
+//
         Actions builder2= new Actions(getDriver());
         Actions hoverOver2= builder2.moveToElement(cart);
         hoverOver2.build().perform();
 
         checkout.click();
+
+        delete.click();
+
+        waitFor(finish);
+        assert finish.getText().equals("Your shopping cart is empty.");
     }
 }
